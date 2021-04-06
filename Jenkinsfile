@@ -12,8 +12,10 @@ pipeline {
 
     stage('Testing') {
       steps {
-        sh '''java -Dserver.port=8888 -jar target/spring-petclinic-2.4.2.jar
+        echo 'beginning testing'
+        sh '''mvn sonar:sonar -Dsonar.host.url=http://192.168.33.10:8081 -Dlicense.skip=true
 '''
+        echo 'test complete'
       }
     }
 
